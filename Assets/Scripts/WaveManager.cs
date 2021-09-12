@@ -19,8 +19,12 @@ public class WaveManager : MonoBehaviour
     private int unitCount = 0;
     private int waveIndex = 0;
 
+    private Player player = null;
+
     void Start()
     {
+        player = FindObjectOfType<Player>();
+
         SetUIWaveIndex();
 
         StartCoroutine(SpawnWave(waveList[waveIndex]));
@@ -41,7 +45,7 @@ public class WaveManager : MonoBehaviour
     private void SpawnUnit(GameObject unitType, Transform spawnPoint)
     {
         GameObject unit = Instantiate<GameObject>(unitType, new Vector3(spawnPoint.position.x, spawnPoint.position.y, unitType.transform.position.z), Quaternion.identity);
-        unit.GetComponent<UnitMovement>().InitalizeUnit(this, waypoints[0], spawnPoint.rotation);
+        unit.GetComponent<UnitMovement>().InitalizeUnit(this, player, waypoints[0], spawnPoint.rotation);
         unitCount++;
     }
 
