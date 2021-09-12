@@ -5,6 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class Turret : MonoBehaviour
 {
+    [SerializeField] TurretType type = 0;
+    public TurretType Type { get => this.type; }
+
+    [SerializeField] private int typeLevel = 0;
+    public int TypeLevel { get => this.typeLevel; }
+
     [SerializeField] private LayerMask targetUnits = 0;
 
     [SerializeField] private int damage = 2;

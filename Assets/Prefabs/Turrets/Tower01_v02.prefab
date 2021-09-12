@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2695314839281004610}
+  - component: {fileID: -4418586616032220969}
+  - component: {fileID: -8194247361609268079}
   m_Layer: 0
   m_Name: Tower01_v02
   m_TagString: Untagged
@@ -32,6 +34,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &-4418586616032220969
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395839884207015776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8194247361609268079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395839884207015776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a747f48c18ffbe9459425f0193d52d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  typeLevel: 1
+  targetUnits:
+    serializedVersion: 2
+    m_Bits: 192
+  damage: 4
+  attackSpeed: 1
+  modelHead: {fileID: 793296923087581924}
+  effectTime: 0.5
+  attackEffect: []
 --- !u!1 &1609357738683789243
 GameObject:
   m_ObjectHideFlags: 0
