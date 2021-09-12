@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2789359447675330511}
   - component: {fileID: 33056457373614215}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216761727092318971}
   - component: {fileID: 725055002550291206}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5184366303018680109}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tank02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
