@@ -13,17 +13,13 @@ public class Turret : MonoBehaviour
 
     [SerializeField] private LayerMask targetUnits = 0;
 
-    [SerializeField] private int damage = 2;
-    [SerializeField] private float attackSpeed = 1f;
+    [SerializeField] protected int damage = 2;
+    [SerializeField] protected float attackSpeed = 1f;
 
     [Header("Model:")]
     [SerializeField] private Transform modelHead = null;
-    [Space(10f)]
-    [SerializeField] private float effectTime = 0.5f;
-    [SerializeField] private GameObject[] attackEffect = null;
 
-    private int indexAttackEffect = 0;
-    private List<GameObject> targets = new List<GameObject>();
+    protected List<GameObject> targets = new List<GameObject>();
 
     void Start()
     {
@@ -37,38 +33,20 @@ public class Turret : MonoBehaviour
             modelHead.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, (targets[0].gameObject.transform.position - modelHead.position), Vector3.forward));
         }
     }
-    private IEnumerator ShotTarget()
+    public virtual IEnumerator ShotTarget()
     {
         yield return new WaitForSeconds(attackSpeed);
 
         yield return new WaitUntil(() => targets.Count > 0);
-
-        HealthComponent component = targets[0].GetComponent<HealthComponent>();
-        StartCoroutine(ShowAttack());
-        component.OnDecreaseHealth(damage);
+     
+        OnAttack();
 
         StartCoroutine(ShotTarget());
     }
 
-    private IEnumerator ShowAttack()
+    public virtual void OnAttack()
     {
-        if (attackEffect.Length <= 0)
-        {
-            yield break;
-        }
 
-        attackEffect[indexAttackEffect].SetActive(true);
-        yield return new WaitForSeconds(effectTime);
-        attackEffect[indexAttackEffect].SetActive(false);
-
-        if (indexAttackEffect < attackEffect.Length - 1)
-        {
-            indexAttackEffect++;
-        }
-        else if (attackEffect.Length > 1 && indexAttackEffect >= attackEffect.Length - 1)
-        {
-            indexAttackEffect = 0;
-        }
     }
 
     public void RemoveTarget(GameObject obj)

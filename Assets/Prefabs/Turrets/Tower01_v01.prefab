@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1311747028715725242}
   - component: {fileID: 7085329750550510443}
-  - component: {fileID: 3788372286003462243}
+  - component: {fileID: 5178336966870047440}
   m_Layer: 0
   m_Name: Tower01_v01
   m_TagString: Untagged
@@ -211,7 +211,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3788372286003462243
+--- !u!114 &5178336966870047440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6182496378456725575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a747f48c18ffbe9459425f0193d52d49, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f91ee823b6f8474d93a1b60882c2d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
@@ -259,7 +259,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6247871125519428709}
-  m_LocalRotation: {x: -0, y: -0, z: 0.49879178, w: 0.86672187}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
