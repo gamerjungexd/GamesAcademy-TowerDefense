@@ -3897,6 +3897,7 @@ GameObject:
   - component: {fileID: 346375004}
   - component: {fileID: 346375003}
   - component: {fileID: 346375002}
+  - component: {fileID: 346375005}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -4005,6 +4006,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346375000}
   m_CullTransparentMesh: 1
+--- !u!114 &346375005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346375000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7e87eb33b25dd489d41c1ec9e3c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &407279432
 GameObject:
   m_ObjectHideFlags: 0
@@ -6850,9 +6863,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f8f054064ed4546a9d656ef3d499d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TurretUpgrades:
-  - {fileID: 6182496378456725575, guid: 47e1d2ffae3fc624380581cd226e51bc, type: 3}
-  - {fileID: 395839884207015776, guid: 5f5e21d46321d5c44bd8214558cf93d5, type: 3}
 --- !u!1 &1615604894
 GameObject:
   m_ObjectHideFlags: 0
@@ -7306,6 +7316,7 @@ GameObject:
   - component: {fileID: 1761671602}
   - component: {fileID: 1761671601}
   - component: {fileID: 1761671600}
+  - component: {fileID: 1761671603}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -7414,6 +7425,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761671598}
   m_CullTransparentMesh: 1
+--- !u!114 &1761671603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761671598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7e87eb33b25dd489d41c1ec9e3c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1762741263
 GameObject:
   m_ObjectHideFlags: 0

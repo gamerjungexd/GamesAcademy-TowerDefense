@@ -69,7 +69,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OpenMax
-  m_Speed: 1
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3517475952489792567}
@@ -98,7 +98,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OpenUpgrade
-  m_Speed: 1
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5428216343867572177}
@@ -127,7 +127,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CloseUpgrade
-  m_Speed: 1
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5809755807186640634}
@@ -265,13 +265,13 @@ AnimatorStateMachine:
     m_Position: {x: -20, y: 370, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6714761963692636346}
-    m_Position: {x: 330, y: 690, z: 0}
+    m_Position: {x: 210, y: 620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7618780467811832765}
     m_Position: {x: -140, y: 480, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6356855346193941532}
-    m_Position: {x: -140, y: 610, z: 0}
+    m_Position: {x: -170, y: 610, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7871692487836082932}
     m_Position: {x: -110, y: 750, z: 0}
@@ -604,7 +604,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CloseMax
-  m_Speed: 1
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5966955154892284892}
