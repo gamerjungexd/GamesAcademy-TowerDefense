@@ -24,6 +24,7 @@ public class UnitMovement : MonoBehaviour
         {
             if (waveManager.NextPosition(waypointIndex++, out Transform newPosition))
             {
+                waveManager.DecreaseUnitCount();
                 Destroy(gameObject);
                 return;
             }

@@ -4119,8 +4119,10 @@ MonoBehaviour:
   - {fileID: 2007295963}
   - {fileID: 1544452162}
   - {fileID: 540642317}
+  timeBetweenWaves: 10
   waveList:
   - {fileID: 11400000, guid: b25979d176fac7444a13ee1dff264e55, type: 2}
+  - {fileID: 11400000, guid: 74f9d8ed19967c948ac15f95f613d883, type: 2}
 --- !u!4 &548068190
 Transform:
   m_ObjectHideFlags: 0

@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Wave", menuName = "ScriptableObjects/Wave", order = 1)]
 public class Wave : ScriptableObject
 {
-    public string waveName = "Wave 00";
     public WaveContent[] content = null;
 }
 

@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 067c97da95ff205489764c4628167985, type: 3}
-  m_Name: Wave
+  m_Name: Wave02
   m_EditorClassIdentifier: 
-  waveName: Wave 01
   content:
-  - unitType: {fileID: 661549656348688847, guid: b1ec9d5124ba135459794004db39a389, type: 3}
+  - unitType: {fileID: 4373838139031115092, guid: f0c7f842359102a4ea222dcb653a1e9b, type: 3}
     count: 5
     delay: 1
     delayNextWaveContent: 5
-  - unitType: {fileID: 4373838139031115092, guid: f0c7f842359102a4ea222dcb653a1e9b, type: 3}
+  - unitType: {fileID: 4677875964873852217, guid: a1125b139e97e254793e3187c438eea3, type: 3}
     count: 1
     delay: 1
     delayNextWaveContent: 0
