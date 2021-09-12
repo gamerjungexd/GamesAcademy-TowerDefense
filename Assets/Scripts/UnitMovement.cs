@@ -6,6 +6,9 @@ public class UnitMovement : MonoBehaviour
 {
     [SerializeField] private float toleranceDistance = 0.1f;
 
+    [Header("Model:")]
+    [SerializeField] private GameObject body = null;
+
     private int waypointIndex = 0;
     private Transform nextPosition = null;
 
@@ -15,7 +18,7 @@ public class UnitMovement : MonoBehaviour
     void Start()
     {
         characterController = gameObject.GetComponent<CharacterController>();
-        characterController.detectCollisions = false;
+        //characterController.detectCollisions = false;
     }
 
     void FixedUpdate()
@@ -28,7 +31,7 @@ public class UnitMovement : MonoBehaviour
                 Destroy(gameObject);
                 return;
             }
-            transform.rotation = nextPosition.rotation;
+            body.transform.rotation = nextPosition.rotation;
             nextPosition = newPosition;
         }
 
@@ -36,9 +39,10 @@ public class UnitMovement : MonoBehaviour
         characterController.Move(direction);
     }
 
-    public void InitalizeUnit(WaveManager waveManager, Transform nextPosition)
+    public void InitalizeUnit(WaveManager waveManager, Transform nextPosition, Quaternion rotation)
     {
         this.waveManager = waveManager;
         this.nextPosition = nextPosition;
+        body.transform.rotation = rotation;
     }
 }

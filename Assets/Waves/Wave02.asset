@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Wave02
   m_EditorClassIdentifier: 
   content:
-  - unitType: {fileID: 4373838139031115092, guid: f0c7f842359102a4ea222dcb653a1e9b, type: 3}
+  - unitType: {fileID: 5181698981064004085, guid: f0c7f842359102a4ea222dcb653a1e9b, type: 3}
     count: 5
     delay: 1
     delayNextWaveContent: 5
-  - unitType: {fileID: 4677875964873852217, guid: a1125b139e97e254793e3187c438eea3, type: 3}
+  - unitType: {fileID: 8558826873425531822, guid: a1125b139e97e254793e3187c438eea3, type: 3}
     count: 1
     delay: 1
     delayNextWaveContent: 0

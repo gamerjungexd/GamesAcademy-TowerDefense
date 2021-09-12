@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
@@ -12,11 +13,16 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 10f;
     [SerializeField] private Wave[] waveList = null;
 
+    [Header("UI:")]
+    [SerializeField] private TMP_Text textfieldWaveIndex = null;
+
     private int unitCount = 0;
     private int waveIndex = 0;
 
     void Start()
     {
+        SetUIWaveIndex();
+
         StartCoroutine(SpawnWave(waveList[waveIndex]));
     }
 
@@ -34,8 +40,8 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnUnit(GameObject unitType, Transform spawnPoint)
     {
-        GameObject unit = Instantiate<GameObject>(unitType, new Vector3(spawnPoint.position.x, spawnPoint.position.y, unitType.transform.position.z), spawnPoint.rotation);
-        unit.GetComponent<UnitMovement>().InitalizeUnit(this, waypoints[0]);
+        GameObject unit = Instantiate<GameObject>(unitType, new Vector3(spawnPoint.position.x, spawnPoint.position.y, unitType.transform.position.z), Quaternion.identity);
+        unit.GetComponent<UnitMovement>().InitalizeUnit(this, waypoints[0], spawnPoint.rotation);
         unitCount++;
     }
 
@@ -62,14 +68,20 @@ public class WaveManager : MonoBehaviour
         if (unitCount <= 0)
         {
             waveIndex++;
-            if (waveIndex < waveList.Length)
-            {
-                StartCoroutine(SpawnWave(waveList[waveIndex]));
-            }
-            else
+
+            if (waveIndex >= waveList.Length)
             {
                 Debug.Log("WIN!");
+                return;
             }
+
+            SetUIWaveIndex();
+            StartCoroutine(SpawnWave(waveList[waveIndex]));
         }
+    }
+
+    private void SetUIWaveIndex()
+    {
+        textfieldWaveIndex.text = "" + (waveIndex + 1);
     }
 }
