@@ -455,7 +455,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageToPlayer: 5
   toleranceDistance: 0.1
-  body: {fileID: 2076480612131754822}
+  body:
+  - {fileID: 2076480612131754822}
 --- !u!143 &-1691088205870226882
 CharacterController:
   m_ObjectHideFlags: 0

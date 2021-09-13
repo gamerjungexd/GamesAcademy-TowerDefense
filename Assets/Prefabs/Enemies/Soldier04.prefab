@@ -580,8 +580,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fce178dd69202e4ca94a1be53c3f80f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageToPlayer: 1
   toleranceDistance: 0.1
-  body: {fileID: 2606233317054231527}
+  body:
+  - {fileID: 2606233317054231527}
 --- !u!143 &4651060649350575595
 CharacterController:
   m_ObjectHideFlags: 0

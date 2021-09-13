@@ -8,10 +8,11 @@ public class UnitMovement : MonoBehaviour
     [SerializeField] private float toleranceDistance = 0.1f;
 
     [Header("Model:")]
-    [SerializeField] private GameObject body = null;
+    [SerializeField] private GameObject[] body = null;
 
     private int waypointIndex = 0;
-    private Transform nextPosition = null;
+    private Vector3 nextPosition = Vector3.zero;
+    private Quaternion nextRotation = Quaternion.identity;
 
     private CharacterController characterController = null;
     private WaveManager waveManager = null;
@@ -25,28 +26,37 @@ public class UnitMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (((Vector2)nextPosition.position - (Vector2)transform.position).magnitude <= toleranceDistance)
+        if (((Vector2)nextPosition - (Vector2)transform.position).magnitude <= toleranceDistance)
         {
-            if (waveManager.NextPosition(waypointIndex++, out Transform newPosition))
+            waypointIndex++;
+            if (waveManager.NextPosition(waypointIndex, gameObject.layer, out Vector3 newPosition, out Quaternion newRotation))
             {
                 waveManager.DecreaseUnitCount();
                 player.OnDecreaseHealth(damageToPlayer);
                 Destroy(gameObject);
                 return;
             }
-            body.transform.rotation = nextPosition.rotation;
+            foreach (GameObject obj in body)
+            {
+                obj.transform.rotation = nextRotation;
+            }
             nextPosition = newPosition;
+            nextRotation = newRotation;
         }
 
-        Vector2 direction = ((Vector2)nextPosition.position - (Vector2)transform.position).normalized * Time.deltaTime;
+        Vector2 direction = ((Vector2)nextPosition - (Vector2)transform.position).normalized * Time.deltaTime;
         characterController.Move(direction);
     }
 
-    public void InitalizeUnit(WaveManager waveManager, Player player, Transform nextPosition, Quaternion rotation)
+    public void InitalizeUnit(WaveManager waveManager, Player player, Vector3 nextPosition, Quaternion nextRotation, Quaternion rotation)
     {
         this.waveManager = waveManager;
         this.player = player;
         this.nextPosition = nextPosition;
-        body.transform.rotation = rotation;
+        this.nextRotation = nextRotation;
+        foreach (GameObject obj in body)
+        {
+            obj.transform.rotation = rotation;
+        }
     }
 }

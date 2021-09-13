@@ -28,9 +28,12 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        if (modelHead != null && targets.Count > 0)
+        if (Time.timeScale > 0)
         {
-            modelHead.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, (targets[0].gameObject.transform.position - modelHead.position), Vector3.forward));
+            if (modelHead != null && targets.Count > 0)
+            {
+                modelHead.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, (targets[0].gameObject.transform.position - modelHead.position), Vector3.forward));
+            }
         }
     }
     public virtual IEnumerator ShotTarget()
@@ -38,7 +41,7 @@ public class Turret : MonoBehaviour
         yield return new WaitForSeconds(attackSpeed);
 
         yield return new WaitUntil(() => targets.Count > 0);
-     
+
         OnAttack();
 
         StartCoroutine(ShotTarget());

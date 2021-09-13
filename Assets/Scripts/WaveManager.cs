@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum UnitLayer { Ground = 6, Air = 7 }
+
+
 public class WaveManager : MonoBehaviour
 {
     [Header("Waypoints:")]
-    [SerializeField] private Transform spawnPoint = null;
     [SerializeField] private Transform[] waypoints = null;
+
+    [SerializeField] private Transform[] waypointsAir = null;
+    [SerializeField] private int spawnLineDistance = 5;
 
     [Header("Wave:")]
     [SerializeField] private float timeBetweenWaves = 10f;
@@ -38,22 +43,63 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(SpawnWave(waveList[waveIndex]));
     }
 
-    public bool NextPosition(int index, out Transform nextPosition)
+    public bool NextPosition(int index, int layer, out Vector3 nextPosition, out Quaternion nextRotation)
     {
-        if (index >= waypoints.Length)
+        switch ((UnitLayer)layer)
         {
-            nextPosition = null;
-            return true;
-        }
+            case UnitLayer.Ground:
+                if (index >= waypoints.Length)
+                {
+                    nextPosition = Vector3.zero;
+                    nextRotation = Quaternion.identity;
+                    return true;
+                }
 
-        nextPosition = waypoints[index];
-        return false;
+                nextPosition = waypoints[index].position;
+                nextRotation = waypoints[index].rotation;
+                return false;
+            case UnitLayer.Air:
+                if (index >= waypointsAir.Length)
+                {
+                    nextPosition = Vector3.zero;
+                    nextRotation = Quaternion.identity;
+                    return true;
+                }
+
+                nextPosition = waypointsAir[index].position;
+                nextRotation = waypointsAir[index].rotation;
+                return false;
+            default:
+                nextPosition = Vector3.zero;
+                nextRotation = Quaternion.identity;
+                return false;
+        }
     }
 
-    private void SpawnUnit(GameObject unitType, Transform spawnPoint)
+    private void SpawnUnit(GameObject unitType)
     {
-        GameObject unit = Instantiate<GameObject>(unitType, new Vector3(spawnPoint.position.x, spawnPoint.position.y, unitType.transform.position.z), Quaternion.identity);
-        unit.GetComponent<UnitMovement>().InitalizeUnit(this, player, waypoints[0], spawnPoint.rotation);
+        Transform spawnPoint = null;
+        Vector3 nextPoint = Vector3.zero;
+        Quaternion nextRotation = Quaternion.identity;
+
+        float offsetY = 0f;
+        switch ((UnitLayer)unitType.layer)
+        {
+            case UnitLayer.Ground:
+                spawnPoint = waypoints[0];
+                nextPoint = waypoints[1].position;
+                nextRotation = waypoints[1].rotation;
+                break;
+            case UnitLayer.Air:
+                spawnPoint = waypointsAir[0];
+                nextPoint = waypointsAir[1].position;
+                nextRotation = waypointsAir[1].rotation;
+                offsetY = Random.Range(-spawnLineDistance, spawnLineDistance);
+                nextPoint = new Vector3(nextPoint.x, spawnPoint.position.y + offsetY, nextPoint.z);
+                break;
+        }
+        GameObject unit = Instantiate<GameObject>(unitType, new Vector3(spawnPoint.position.x, spawnPoint.position.y + offsetY, unitType.transform.position.z), Quaternion.identity);
+        unit.GetComponent<UnitMovement>().InitalizeUnit(this, player, nextPoint, nextRotation, spawnPoint.rotation);
         unitCount++;
     }
 
@@ -66,7 +112,7 @@ public class WaveManager : MonoBehaviour
             for (int j = 0; j < wave.content[i].count; j++)
             {
                 yield return new WaitForSeconds(wave.content[i].delay);
-                SpawnUnit(wave.content[i].unitType, spawnPoint);
+                SpawnUnit(wave.content[i].unitType);
             }
             yield return new WaitForSeconds(wave.content[i].delayNextWaveContent);
         }

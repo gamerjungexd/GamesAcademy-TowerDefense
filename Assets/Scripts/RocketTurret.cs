@@ -10,7 +10,10 @@ public class RocketTurret : Turret
     private int indexSpawner = 0;
     public override void OnAttack()
     {
-        spawner[indexSpawner].StartRocket(targets[0], damage, reloadTime, rocketSpeed);
+        if (targets.Count > 0)
+        {
+            spawner[indexSpawner].StartRocket(targets[0], damage, reloadTime, rocketSpeed);
+        }
     }
 
     public override IEnumerator ShotTarget()
