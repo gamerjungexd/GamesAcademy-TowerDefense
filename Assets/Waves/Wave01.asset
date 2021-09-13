@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave01
   m_EditorClassIdentifier: 
   content:
-  - unitType: {fileID: 8628770055011366226, guid: b1ec9d5124ba135459794004db39a389, type: 3}
+  - unitType: {fileID: 6016216762771448456, guid: 3614b9703556737479466ecbb412f2b8, type: 3}
     count: 5
     delay: 1
     delayNextWaveContent: 5

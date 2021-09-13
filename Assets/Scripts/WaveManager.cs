@@ -15,6 +15,7 @@ public class WaveManager : MonoBehaviour
 
     [Header("UI:")]
     [SerializeField] private TMP_Text textfieldWaveIndex = null;
+    [SerializeField] private GameObject gameWin = null;
 
     [Header("Turrets:")]
     [SerializeField] private GameObject[] TurretUpgrades = null;
@@ -82,7 +83,8 @@ public class WaveManager : MonoBehaviour
 
             if (waveIndex >= waveList.Length)
             {
-                Debug.Log("WIN!");
+                Time.timeScale = 0f;
+                gameWin.SetActive(true);
                 return;
             }
 
