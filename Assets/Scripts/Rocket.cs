@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
+    [SerializeField] private GameObject vfxImpact = null;
     [SerializeField] private float delayLayer = 0.4f;
 
     [SerializeField] private float toleranceDistance = 0.2f;
-    [SerializeField] private ParticleSystem particleSystem = null;
+    [SerializeField] private ParticleSystem particles = null;
 
     private bool started = false;
     private Vector3 lastPosition = Vector3.zero;
@@ -44,7 +45,7 @@ public class Rocket : MonoBehaviour
         this.rocketSpeed = rocketSpeed;
 
         started = true;
-        particleSystem.Play();
+        particles.Play();
         StartCoroutine(IncreaseLayer());
     }
 
@@ -55,6 +56,9 @@ public class Rocket : MonoBehaviour
             HealthComponent component = target.GetComponent<HealthComponent>();
             component.OnDecreaseHealth(damage);
         }
+
+        Instantiate<GameObject>(vfxImpact, transform.position + new Vector3(Random.Range(-0.25f, 0.25f), Random.Range(-0.25f, 0.25f)), Quaternion.Euler(0, 0, Random.Range(0, 360)));
+
         Destroy(gameObject);
     }
 
@@ -62,6 +66,6 @@ public class Rocket : MonoBehaviour
     {
         yield return new WaitForSeconds(delayLayer);
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 8;
-        particleSystem.GetComponent<Renderer>().sortingOrder = 7;
+        particles.GetComponent<Renderer>().sortingOrder = 7;
     }
 }

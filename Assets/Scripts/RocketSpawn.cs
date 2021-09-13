@@ -12,20 +12,21 @@ public class RocketSpawn : MonoBehaviour
 
     private void Start()
     {
-        rocket = Instantiate<GameObject>(rocketType, transform.position, transform.rotation).GetComponent<Rocket>();
+        rocket = Instantiate<GameObject>(rocketType, transform).GetComponent<Rocket>();
         isReady = true;
     }
     public IEnumerator ReloadRocket(float reloadTime)
     {
         yield return new WaitForSeconds(reloadTime);
 
-        rocket = Instantiate<GameObject>(rocketType, transform.position, transform.rotation).GetComponent<Rocket>();
+        rocket = Instantiate<GameObject>(rocketType, transform).GetComponent<Rocket>();
         isReady = true;
     }
 
     public void StartRocket(GameObject target, int damage, float reloadTime, float rocketSpeed)
     {
         isReady = false;
+        rocket.transform.SetParent(null);
         rocket.InitalizeRocket(target, damage, rocketSpeed);
         StartCoroutine(ReloadRocket(reloadTime));
     }

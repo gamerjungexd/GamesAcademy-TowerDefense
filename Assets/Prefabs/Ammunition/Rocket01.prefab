@@ -96,9 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be28926bfa5ce749b79a44065aef453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vfxImpact: {fileID: 1996293528237659714, guid: 3c28f42b2205c2f48b7302ee1864280f, type: 3}
   delayLayer: 0.4
   toleranceDistance: 0.2
-  particleSystem: {fileID: 2327387188544082401}
+  particles: {fileID: 2327387188544082401}
 --- !u!1001 &2648106305266927171
 PrefabInstance:
   m_ObjectHideFlags: 0

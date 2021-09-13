@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6293965193090406127}
   - component: {fileID: 6293965193090406126}
+  - component: {fileID: 4586225885141462805}
   m_Layer: 0
   m_Name: Rocket02
   m_TagString: Untagged
@@ -83,6 +84,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4586225885141462805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6293965193090406121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be28926bfa5ce749b79a44065aef453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxImpact: {fileID: 1996293528237659714, guid: 3c28f42b2205c2f48b7302ee1864280f, type: 3}
+  delayLayer: 0.4
+  toleranceDistance: 0.2
+  particles: {fileID: 6029153360242143308}
 --- !u!1001 &6293965193622497262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -155,5 +172,10 @@ PrefabInstance:
 --- !u!4 &4878974061405181232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1507930651774169822, guid: f575d662e6ad6e04386d937b13f8502a, type: 3}
+  m_PrefabInstance: {fileID: 6293965193622497262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6029153360242143308 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 356766194300049314, guid: f575d662e6ad6e04386d937b13f8502a, type: 3}
   m_PrefabInstance: {fileID: 6293965193622497262}
   m_PrefabAsset: {fileID: 0}

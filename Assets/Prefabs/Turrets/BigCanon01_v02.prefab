@@ -339,6 +339,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 614299168039140890}
+  - component: {fileID: 3339008460518217894}
+  - component: {fileID: 3936284415262705357}
   m_Layer: 0
   m_Name: BigCanon01_v02
   m_TagString: Untagged
@@ -362,3 +364,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3339008460518217894
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268435435618334641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3936284415262705357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268435435618334641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f91ee823b6f8474d93a1b60882c2d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  typeLevel: 1
+  targetUnits:
+    serializedVersion: 2
+    m_Bits: 64
+  damage: 15
+  attackSpeed: 2.5
+  modelHead: {fileID: 8270995998150272059}
+  effectTime: 0.5
+  attackEffect:
+  - {fileID: 1161280034319997116}
+  - {fileID: 6931174276579031311}
