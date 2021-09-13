@@ -10,8 +10,11 @@ public class ButtonCreateTurret : MonoBehaviour
 
     private Button button = null;
     private UserInput userInput = null;
+    private Player player = null;
     void Awake()
     {
+        player = FindObjectOfType<Player>();
+
         userInput = FindObjectOfType<UserInput>();
 
         button = gameObject.GetComponent<Button>();
@@ -20,7 +23,12 @@ public class ButtonCreateTurret : MonoBehaviour
 
     public void CreateTurret()
     {
-        userInput.AddTurret(Instantiate<GameObject>(turretType, userInput.LastClickedCell, Quaternion.identity));
+        int cost = turretType.GetComponent<Turret>().Cost;
+        if (player.Resources >= cost)
+        {
+            player.EditResources(-cost);
+            userInput.AddTurret(Instantiate<GameObject>(turretType, userInput.LastClickedCell, Quaternion.identity));
+        }
     }
 
 }

@@ -230,6 +230,7 @@ MonoBehaviour:
     m_Bits: 192
   damage: 2
   attackSpeed: 1
+  cost: 5
   modelHead: {fileID: 5624623073517561521}
   effectTime: 0.5
   attackEffect:

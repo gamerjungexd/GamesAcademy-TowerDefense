@@ -16,6 +16,9 @@ public class Turret : MonoBehaviour
     [SerializeField] protected int damage = 2;
     [SerializeField] protected float attackSpeed = 1f;
 
+    [SerializeField] private int cost = 1;
+    public int Cost { get => this.cost; }
+
     [Header("Model:")]
     [SerializeField] private Transform modelHead = null;
 

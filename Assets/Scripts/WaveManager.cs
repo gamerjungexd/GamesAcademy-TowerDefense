@@ -32,6 +32,10 @@ public class WaveManager : MonoBehaviour
     private int waveIndex = 0;
 
     private Player player = null;
+    public Player Player { get => this.player; }
+
+    [SerializeField] private GameObject resourceTarget = null;
+    public GameObject ResourceTarget { get => this.resourceTarget; }
 
     void Start()
     {

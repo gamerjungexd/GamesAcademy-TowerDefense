@@ -8,8 +8,11 @@ public class ButtonDestroyTurret : MonoBehaviour
 {
     private Button button = null;
     private UserInput userInput = null;
+    private Player player = null;
     void Awake()
     {
+        player = FindObjectOfType<Player>();
+
         userInput = FindObjectOfType<UserInput>();
 
         button = gameObject.GetComponent<Button>();
@@ -18,6 +21,7 @@ public class ButtonDestroyTurret : MonoBehaviour
 
     private void DestroyTurret()
     {
+        player.EditResources(userInput.LastClickedTurret.GetComponent<Turret>().Cost / 3);
         userInput.RemoveTurret(userInput.LastClickedTurret);
         Destroy(userInput.LastClickedTurret);
     }

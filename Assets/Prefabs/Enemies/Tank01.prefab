@@ -241,7 +241,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
+  dropResources: 96
+  maxForce: 2
   healthbar: {fileID: 6031063391188392670}
+  resourceObject: {fileID: 8206030664495593090, guid: 502f9106f904c304991cd89fe3c445e8, type: 3}
 --- !u!114 &6256286487788403460
 MonoBehaviour:
   m_ObjectHideFlags: 0

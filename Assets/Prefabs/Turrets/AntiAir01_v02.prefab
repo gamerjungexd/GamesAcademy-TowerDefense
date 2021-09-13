@@ -66,6 +66,7 @@ MonoBehaviour:
     m_Bits: 128
   damage: 5
   attackSpeed: 1
+  cost: 50
   modelHead: {fileID: 1904145419686148014}
   reloadTime: 3
   rocketSpeed: 3
