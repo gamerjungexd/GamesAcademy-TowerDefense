@@ -30,14 +30,16 @@ public class HealthComponent : MonoBehaviour
 
     public void OnDecreaseHealth(int value)
     {
-
-        health -= value;
-        if (health <= 0)
+        if (value > 0)
         {
-            OnDeath();
-            return;
+            health -= value;
+            if (health <= 0)
+            {
+                OnDeath();
+                return;
+            }
+            UpdateHealthbar();
         }
-        UpdateHealthbar();
     }
 
     private void UpdateHealthbar()
@@ -53,10 +55,9 @@ public class HealthComponent : MonoBehaviour
     private void OnDeath()
     {
         waveManager.DecreaseUnitCount();
-        foreach (Turret turret in attackers)
-        {
-            turret.RemoveTarget(gameObject);
-        }
+
+        RemoveUnitFromTurretTarget();
+
         Resource res = resourceObject.GetComponent<Resource>();
         int availableResources = dropResources;
         for (int i = res.maxValueSteps - 1; i >= 0; i--)
@@ -98,6 +99,14 @@ public class HealthComponent : MonoBehaviour
         if (turret != null)
         {
             attackers.Remove(turret);
+        }
+    }
+
+    public void RemoveUnitFromTurretTarget()
+    {
+        foreach (Turret turret in attackers)
+        {
+            turret.RemoveTarget(gameObject);
         }
     }
 }

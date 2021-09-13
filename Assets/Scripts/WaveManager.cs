@@ -8,6 +8,9 @@ public enum UnitLayer { Ground = 6, Air = 7 }
 
 public class WaveManager : MonoBehaviour
 {
+    [Header("Debug:")]
+    [SerializeField] private bool loopWaves = false;
+
     [Header("Waypoints:")]
     [SerializeField] private Transform[] waypoints = null;
 
@@ -133,9 +136,16 @@ public class WaveManager : MonoBehaviour
 
             if (waveIndex >= waveList.Length)
             {
-                Time.timeScale = 0f;
-                gameWin.SetActive(true);
-                return;
+                if(loopWaves)
+                {
+                    waveIndex = 0;
+                }
+                else
+                {
+                    Time.timeScale = 0f;
+                    gameWin.SetActive(true);
+                    return;
+                }
             }
 
             SetUIWaveIndex();

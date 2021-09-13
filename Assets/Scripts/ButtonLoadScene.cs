@@ -20,15 +20,25 @@ public class ButtonLoadScene : MonoBehaviour
     public void NextLevel()
     {
         int index = SceneManager.GetActiveScene().buildIndex + 1;
-        if (SceneManager.GetSceneByBuildIndex(index) != null)
+        try
         {
+            SceneManager.GetSceneByBuildIndex(index);
             LoadScene(index);
         }
-        else
+        catch
         {
             LoadScene(0);
-
         }
+    }
+
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#else
+        Application.Quit(0);
+#endif
     }
 
 

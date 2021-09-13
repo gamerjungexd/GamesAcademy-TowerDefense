@@ -23,6 +23,8 @@ public class Resource : MonoBehaviour
 
     private bool startCollect = false;
 
+    [SerializeField] private ParticleSystem particle = null;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -55,6 +57,7 @@ public class Resource : MonoBehaviour
         startCollect = true;
 
         body.velocity = Vector2.zero;
+        particle.Play();
     }
 
     private void Update()
@@ -64,6 +67,7 @@ public class Resource : MonoBehaviour
             Vector3 direction = (target.transform.position - transform.position).normalized;
             direction *= Time.deltaTime * speed;
 
+            transform.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, direction, Vector3.forward));
             transform.position += direction;
 
             if (((Vector2)target.transform.position - (Vector2)transform.position).magnitude <= toleranceDistance)

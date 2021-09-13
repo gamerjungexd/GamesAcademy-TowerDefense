@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController), typeof(HealthComponent))]
 public class UnitMovement : MonoBehaviour
 {
     [SerializeField] private int damageToPlayer = 1;
@@ -32,7 +33,11 @@ public class UnitMovement : MonoBehaviour
             if (waveManager.NextPosition(waypointIndex, gameObject.layer, out Vector3 newPosition, out Quaternion newRotation))
             {
                 waveManager.DecreaseUnitCount();
-                player.OnDecreaseHealth(damageToPlayer);
+                gameObject.GetComponent<HealthComponent>().RemoveUnitFromTurretTarget();
+                if (player != null)
+                {
+                    player.OnDecreaseHealth(damageToPlayer);
+                }
                 Destroy(gameObject);
                 return;
             }
