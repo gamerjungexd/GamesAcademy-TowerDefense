@@ -4657,6 +4657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7e87eb33b25dd489d41c1ec9e3c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refundMultiply: 0.3
 --- !u!1 &392844242
 GameObject:
   m_ObjectHideFlags: 0
@@ -5472,6 +5473,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 74f9d8ed19967c948ac15f95f613d883, type: 2}
   textfieldWaveIndex: {fileID: 2006776864}
   gameWin: {fileID: 1166596358}
+  resourceTarget: {fileID: 1574731539}
   TurretUpgrades:
   - {fileID: 6182496378456725575, guid: 47e1d2ffae3fc624380581cd226e51bc, type: 3}
   - {fileID: 395839884207015776, guid: 5f5e21d46321d5c44bd8214558cf93d5, type: 3}
@@ -5479,7 +5481,6 @@ MonoBehaviour:
   - {fileID: 7268435435618334641, guid: 885e95acaef5ce346938155366dd3e4a, type: 3}
   - {fileID: 2227524980436295889, guid: e465202c5c593b74f9206f57c9c79a9d, type: 3}
   - {fileID: 1228632388792447698, guid: dee3d024214a57d4186a895c07957ffb, type: 3}
-  resourceTarget: {fileID: 1227849635}
 --- !u!4 &548068190
 Transform:
   m_ObjectHideFlags: 0
@@ -7632,13 +7633,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443aa43efb77c5d4ea0f0a0e40708cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerSpots:
+  offsetToCell: {x: 0.5, y: 0.5}
+  turretSpots:
   - {fileID: 21300000, guid: 24fb4c41712636d4ebb9146544ed9e9b, type: 3}
   - {fileID: 21300000, guid: f4f5cb5d88112e64696840dec83fe426, type: 3}
   - {fileID: 21300000, guid: 045d87f2231019641aadc0e881cd56ec, type: 3}
   - {fileID: 21300000, guid: b6b6e2c62a8a485498f48372f36329fb, type: 3}
   - {fileID: 21300000, guid: b2f8dbfa3129bd94990295efe2c34de6, type: 3}
   - {fileID: 21300000, guid: a37d0a0ece4e68a42a1c6a996a8704ec, type: 3}
+  - {fileID: 21300000, guid: 722c9dc974cebaa40b493776a914a0dd, type: 3}
+  - {fileID: 21300000, guid: e1cac08cb44d5c849b63f8cbabcc1194, type: 3}
   mouseCanvas: {fileID: 302087511}
   emptySpot: {fileID: 1787654789}
   turretSpot: {fileID: 1260231029}
@@ -8577,6 +8581,36 @@ Transform:
   m_Father: {fileID: 1726315759}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1574731539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1574731540}
+  m_Layer: 0
+  m_Name: ResourceCollector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1574731540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574731539}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7, y: 5.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1577986559
 GameObject:
   m_ObjectHideFlags: 0
@@ -8864,7 +8898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -505, y: 475}
+  m_AnchoredPosition: {x: -490, y: 475}
   m_SizeDelta: {x: 300, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1615604896
@@ -9439,6 +9473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7e87eb33b25dd489d41c1ec9e3c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refundMultiply: 0.3
 --- !u!1 &1762741263
 GameObject:
   m_ObjectHideFlags: 0
@@ -9515,7 +9550,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 31
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0

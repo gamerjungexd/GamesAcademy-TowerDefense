@@ -5,19 +5,30 @@ using UnityEngine.UI;
 
 public class HealthComponent : MonoBehaviour
 {
+    [Tooltip("MaxHealth of the entity.\n[Min 0]")]
+    [Min(0)]
     [SerializeField] private int maxHealth = 10;
+
+    [Tooltip("Value of resource points to drop.\n[Min 0]")]
+    [Min(0)]
     [SerializeField] private int dropResources = 1;
+
+    [Tooltip("The force of the impulse to push the dropped resources.\n[Min 0f]")]
+    [Min(0f)]
     [SerializeField] private float maxForce = 10f;
 
-    [Header("UI:")]
-    [SerializeField] private Slider healthbar = null;
-
+    [Header("Drop:")]
+    [Tooltip("The gameObject to instantiate as resource obejct.")]
     [SerializeField] private GameObject resourceObject = null;
 
-    private int health = 0;
+    [Header("UI:")]
+    [Tooltip("The slider to visualise the health of the entity.")]
+    [SerializeField] private Slider healthbar = null;
 
-    private List<Turret> attackers = new List<Turret>();
+    private int health = 0;
     private WaveManager waveManager = null;
+    private List<Turret> attackers = new List<Turret>();
+
     void Awake()
     {
         health = maxHealth;
@@ -85,6 +96,14 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
+    public void RemoveUnitFromTurretTarget()
+    {
+        foreach (Turret turret in attackers)
+        {
+            turret.RemoveTarget(gameObject);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Turret turret = other.gameObject.GetComponent<Turret>();
@@ -102,11 +121,4 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
-    public void RemoveUnitFromTurretTarget()
-    {
-        foreach (Turret turret in attackers)
-        {
-            turret.RemoveTarget(gameObject);
-        }
-    }
 }

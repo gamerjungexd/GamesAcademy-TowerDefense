@@ -96,10 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be28926bfa5ce749b79a44065aef453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxImpact: {fileID: 1996293528237659714, guid: 3c28f42b2205c2f48b7302ee1864280f, type: 3}
-  delayLayer: 0.4
   toleranceDistance: 0.2
+  delayLayer: 0.4
+  sortingOrderModel: 8
+  sortingOrderVfx: 7
   particles: {fileID: 6029153360242143308}
+  impactArea: 0.25
+  vfxImpact: {fileID: 1996293528237659714, guid: 3c28f42b2205c2f48b7302ee1864280f, type: 3}
 --- !u!1001 &6293965193622497262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109,7 +112,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1230949839033730110, guid: f575d662e6ad6e04386d937b13f8502a, type: 3}
       propertyPath: m_Name
-      value: Rocket_Smoke (1)
+      value: Rocket_Smoke
       objectReference: {fileID: 0}
     - target: {fileID: 1507930651774169822, guid: f575d662e6ad6e04386d937b13f8502a, type: 3}
       propertyPath: m_RootOrder

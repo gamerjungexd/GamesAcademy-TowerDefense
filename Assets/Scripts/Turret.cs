@@ -5,21 +5,34 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class Turret : MonoBehaviour
 {
+    [Tooltip("Type of the turret.")]
     [SerializeField] TurretType type = 0;
     public TurretType Type { get => this.type; }
 
+    [Tooltip("Which upgrade level is the turret of his type.\n[Min 0]")]
+    [Min(0)]
     [SerializeField] private int typeLevel = 0;
     public int TypeLevel { get => this.typeLevel; }
 
-    [SerializeField] private LayerMask targetUnits = 0;
-
-    [SerializeField] protected int damage = 2;
-    [SerializeField] protected float attackSpeed = 1f;
-
+    [Tooltip("Cost of the turret.\n[Min 0]")]
+    [Min(0)]
     [SerializeField] private int cost = 1;
     public int Cost { get => this.cost; }
 
+    [Space(10f)]
+    [Tooltip("Which units the turret should target.")]
+    [SerializeField] private LayerMask targetUnits = 0;
+
+    [Tooltip("Damage of the turret.\n[Min 0]")]
+    [Min(0)]
+    [SerializeField] protected int damage = 2;
+
+    [Tooltip("How long should the turret wait between the attacks in seconds.\n[Min 0f]")]
+    [Min(0f)]
+    [SerializeField] protected float attackSpeed = 1f;
+
     [Header("Model:")]
+    [Tooltip("Model of the head to rotate.")]
     [SerializeField] private Transform modelHead = null;
 
     protected List<GameObject> targets = new List<GameObject>();
@@ -31,12 +44,9 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale > 0)
+        if (modelHead != null && targets.Count > 0)
         {
-            if (modelHead != null && targets.Count > 0)
-            {
-                modelHead.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, (targets[0].gameObject.transform.position - modelHead.position), Vector3.forward));
-            }
+            modelHead.rotation = Quaternion.Euler(0, 0, Vector3.SignedAngle(Vector3.up, (targets[0].gameObject.transform.position - modelHead.position), Vector3.forward));
         }
     }
     public virtual IEnumerator ShotTarget()

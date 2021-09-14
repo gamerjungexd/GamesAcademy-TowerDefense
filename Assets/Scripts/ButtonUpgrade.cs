@@ -6,7 +6,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class ButtonUpgrade : MonoBehaviour
 {
-    private Button button = null;
     private UserInput userInput = null;
     private WaveManager waveManager = null;
     private Player player = null;
@@ -14,12 +13,10 @@ public class ButtonUpgrade : MonoBehaviour
     void Awake()
     {
         player = FindObjectOfType<Player>();
-
         userInput = FindObjectOfType<UserInput>();
         waveManager = FindObjectOfType<WaveManager>();
 
-        button = gameObject.GetComponent<Button>();
-        button.onClick.AddListener(UpgradeTurret);
+        gameObject.GetComponent<Button>().onClick.AddListener(UpgradeTurret);
     }
     public void UpgradeTurret()
     {
@@ -30,9 +27,9 @@ public class ButtonUpgrade : MonoBehaviour
         if (player.Resources >= cost)
         {
             player.EditResources(-cost);
-
             userInput.AddTurret(Instantiate<GameObject>(upgradedTurret, turret.transform.position, turret.transform.rotation));
             userInput.RemoveTurret(turret.gameObject);
+
             Destroy(turret.gameObject);
         }
     }

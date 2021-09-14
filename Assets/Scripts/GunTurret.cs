@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class GunTurret : Turret
 {
-    [Space(10f)]
+    [Header("GunTurret:")]
+
+    [Tooltip("The duration how long the effect is shown.\n[Min 0f]")]
+    [Min(0f)]
     [SerializeField] private float effectTime = 0.5f;
+
+    [Tooltip("The gameObjects of the Effect to turn on/off.")]
     [SerializeField] private GameObject[] attackEffect = null;
 
     private int indexAttackEffect = 0;

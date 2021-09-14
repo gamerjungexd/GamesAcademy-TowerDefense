@@ -5,13 +5,25 @@ using UnityEngine.Tilemaps;
 
 public class UserInput : MonoBehaviour
 {
-    [SerializeField] private Sprite[] TowerSpots = null;
+    [Tooltip("Offset for the position of the menu to the cell.")]
+    [SerializeField] private Vector2 offsetToCell = new Vector2(0.5f, 0.5f);
 
+    [Tooltip("Sprites of the ground where turrets can be created.")]
+    [SerializeField] private Sprite[] turretSpots = null;
+
+    [Tooltip("GameObject of the canvas for the mouse menu.")]
     [SerializeField] private GameObject mouseCanvas = null;
+
+    [Tooltip("GameObject of the emptySpot menu category.")]
     [SerializeField] private GameObject emptySpot = null;
+
+    [Tooltip("GameObject of the turretSpot menu category.")]
     [SerializeField] private GameObject turretSpot = null;
+
+    [Tooltip("GameObject of the maxSpot menu category.")]
     [SerializeField] private GameObject maxSpot = null;
 
+    [Tooltip("Animator of the canvas.")]
     [SerializeField] private Animator animator = null;
 
     private Vector3 lastClickedCell = Vector3.zero;
@@ -32,62 +44,71 @@ public class UserInput : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !emptySpot.activeSelf && !turretSpot.activeSelf && !maxSpot.activeSelf)
+        if (!Input.GetMouseButtonDown(0))
         {
-            Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int cellPos = map.WorldToCell(pos);
-            Vector3 worldPos = map.CellToWorld(cellPos) + new Vector3(0.5f, 0.5f, 0f);
+            return;
+        }
 
-            bool hitTurret = false;
+        if (emptySpot.activeSelf)
+        {
+            animator.SetTrigger("Close");
+            return;
+        }
 
-            foreach (GameObject obj in turrets)
+        if (turretSpot.activeSelf)
+        {
+            animator.SetTrigger("CloseUpgrade");
+            return;
+        }
+
+        if (maxSpot.activeSelf)
+        {
+            animator.SetTrigger("CloseMax");
+            return;
+        }
+
+        Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int cellPos = map.WorldToCell(pos);
+        Vector3 worldPos = map.CellToWorld(cellPos) + new Vector3(offsetToCell.x, offsetToCell.y, 0f);
+
+        bool hitTurret = false;
+
+        foreach (GameObject obj in turrets)
+        {
+            if (obj.transform.position == worldPos)
             {
-                if (obj.transform.position == worldPos)
-                {
-                    hitTurret = true;
-                    lastClickedTurret = obj;
-                    mouseCanvas.transform.position = worldPos;
-                    Turret turret = obj.GetComponent<Turret>();
+                hitTurret = true;
+                lastClickedTurret = obj;
+                mouseCanvas.transform.position = worldPos;
+                Turret turret = obj.GetComponent<Turret>();
 
-                    if (turret.TypeLevel < waveManager.HighestTurretLevel[turret.Type])
-                    {
-                        animator.SetTrigger("OpenUpgrade");
-                    }
-                    else
-                    {
-                        animator.SetTrigger("OpenMax");
-                    }
+                if (turret.TypeLevel < waveManager.HighestTurretLevel[turret.Type])
+                {
+                    animator.SetTrigger("OpenUpgrade");
+                }
+                else
+                {
+                    animator.SetTrigger("OpenMax");
+                }
+                break;
+            }
+        }
+
+        if (!hitTurret)
+        {
+            Tile tile = map.GetTile<Tile>(cellPos);
+            foreach (Sprite sprite in turretSpots)
+            {
+                if (tile.sprite == sprite)
+                {
+                    mouseCanvas.transform.position = worldPos;
+                    animator.SetTrigger("Open");
                     break;
                 }
             }
+        }
+        lastClickedCell = worldPos;
 
-            if (!hitTurret)
-            {
-                Tile tile = map.GetTile<Tile>(cellPos);
-                foreach (Sprite sprite in TowerSpots)
-                {
-                    if (tile.sprite == sprite)
-                    {
-                        mouseCanvas.transform.position = worldPos;
-                        animator.SetTrigger("Open");
-                        break;
-                    }
-                }
-            }
-            lastClickedCell = worldPos;
-        }
-        else if (Input.GetMouseButtonDown(0) && emptySpot.activeSelf)
-        {
-            animator.SetTrigger("Close");
-        }
-        else if (Input.GetMouseButtonDown(0) && turretSpot.activeSelf)
-        {
-            animator.SetTrigger("CloseUpgrade");
-        }
-        else if (Input.GetMouseButtonDown(0) && maxSpot.activeSelf)
-        {
-            animator.SetTrigger("CloseMax");
-        }
     }
 
     public void AddTurret(GameObject obj)

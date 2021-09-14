@@ -347,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4010943780870550019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5184366303018680109}
@@ -490,8 +490,8 @@ MonoBehaviour:
   maxHealth: 100
   dropResources: 192
   maxForce: 2
-  healthbar: {fileID: 1875183611740100811}
   resourceObject: {fileID: 8206030664495593090, guid: 502f9106f904c304991cd89fe3c445e8, type: 3}
+  healthbar: {fileID: 1875183611740100811}
 --- !u!114 &7677111191488675359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,11 +504,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1122e595ec04f446b0d8c9ea066571a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 4010943780870550019}
-  body: {fileID: 2076480612131754822}
   rotationAngle: {x: -180, y: 180}
   rotationDuration: {x: 0.5, y: 2}
   waitForNextDuration: {x: 0.5, y: 2}
+  body: {fileID: 2076480612131754822}
+  head: {fileID: 4010943780870550019}
 --- !u!1 &5909548014712337303
 GameObject:
   m_ObjectHideFlags: 0

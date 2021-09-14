@@ -8,22 +8,22 @@ public class ButtonCreateTurret : MonoBehaviour
 {
     [SerializeField] private GameObject turretType = null;
 
-    private Button button = null;
     private UserInput userInput = null;
     private Player player = null;
+    private Turret turret = null;
+
     void Awake()
     {
         player = FindObjectOfType<Player>();
-
         userInput = FindObjectOfType<UserInput>();
+        turret = turretType.GetComponent<Turret>();
 
-        button = gameObject.GetComponent<Button>();
-        button.onClick.AddListener(CreateTurret);
+        gameObject.GetComponent<Button>().onClick.AddListener(CreateTurret);
     }
 
     public void CreateTurret()
     {
-        int cost = turretType.GetComponent<Turret>().Cost;
+        int cost = turret.Cost;
         if (player.Resources >= cost)
         {
             player.EditResources(-cost);

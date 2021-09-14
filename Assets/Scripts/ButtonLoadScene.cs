@@ -31,7 +31,6 @@ public class ButtonLoadScene : MonoBehaviour
         }
     }
 
-
     public void QuitGame()
     {
 #if UNITY_EDITOR

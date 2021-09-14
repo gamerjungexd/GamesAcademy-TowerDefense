@@ -9,36 +9,54 @@ public enum UnitLayer { Ground = 6, Air = 7 }
 public class WaveManager : MonoBehaviour
 {
     [Header("Debug:")]
+    [Tooltip("Debug option to loop the waves infinitely.")]
     [SerializeField] private bool loopWaves = false;
 
     [Header("Waypoints:")]
+    [Tooltip("Transform of the waypoints for ground units.")]
     [SerializeField] private Transform[] waypoints = null;
 
+    [Space(10f)]
+    [Tooltip("Transform of the waypoints for air units.")]
     [SerializeField] private Transform[] waypointsAir = null;
+
+    [Tooltip("Distance at which the air units can spawn in a line from spawn.\n[Min 0]")]
+    [Min(0)]
     [SerializeField] private int spawnLineDistance = 5;
 
     [Header("Wave:")]
+    [Tooltip("Time between the waves in seconds.\n [0f]")]
+    [Min(0f)]
     [SerializeField] private float timeBetweenWaves = 10f;
+
+    [Tooltip("List of scriptable Wave Objects.")]
     [SerializeField] private Wave[] waveList = null;
 
     [Header("UI:")]
+    [Tooltip("TMP_Text object to visualize the waveIndex.")]
     [SerializeField] private TMP_Text textfieldWaveIndex = null;
+
+    [Tooltip("GameObject to turn on for the win menu.")]
     [SerializeField] private GameObject gameWin = null;
 
+    [Tooltip("Target where the resources should fly to get collected.")]
+    [SerializeField] private GameObject resourceTarget = null;
+    public GameObject ResourceTarget { get => this.resourceTarget; }
+
     [Header("Turrets:")]
+    [Tooltip("GameObjects of each turret to register for the upgrades.")]
     [SerializeField] private GameObject[] TurretUpgrades = null;
 
-    private Dictionary<TurretType, int> highestTurretLevel = new Dictionary<TurretType, int>();
-    public Dictionary<TurretType, int> HighestTurretLevel { get => this.highestTurretLevel; }
 
     private int unitCount = 0;
     private int waveIndex = 0;
 
+    private Dictionary<TurretType, int> highestTurretLevel = new Dictionary<TurretType, int>();
+    public Dictionary<TurretType, int> HighestTurretLevel { get => this.highestTurretLevel; }
+
     private Player player = null;
     public Player Player { get => this.player; }
 
-    [SerializeField] private GameObject resourceTarget = null;
-    public GameObject ResourceTarget { get => this.resourceTarget; }
 
     void Start()
     {
@@ -123,7 +141,6 @@ public class WaveManager : MonoBehaviour
             }
             yield return new WaitForSeconds(wave.content[i].delayNextWaveContent);
         }
-        yield break;
     }
 
     public void DecreaseUnitCount()

@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class RocketSpawn : MonoBehaviour
 {
+    [Tooltip("The gameObject to instantiate.")]
+    [SerializeField] private GameObject rocketType = null;
+
     private bool isReady = false;
     public bool IsReady { get => this.isReady; }
 
-    [SerializeField] private GameObject rocketType = null;
     private Rocket rocket = null;
 
     private void Start()
     {
-        rocket = Instantiate<GameObject>(rocketType, transform).GetComponent<Rocket>();
-        isReady = true;
+        SpawnRocket();
     }
     public IEnumerator ReloadRocket(float reloadTime)
     {
         yield return new WaitForSeconds(reloadTime);
 
+        SpawnRocket();
+    }
+
+    private void SpawnRocket()
+    {
         rocket = Instantiate<GameObject>(rocketType, transform).GetComponent<Rocket>();
         isReady = true;
     }

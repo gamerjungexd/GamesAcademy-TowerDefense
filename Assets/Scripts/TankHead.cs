@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class TankHead : MonoBehaviour
 {
-    [SerializeField] private GameObject head = null;
+    [Tooltip("The min and max of the random value to rotate the head.")]
+    [SerializeField] private Vector2 rotationAngle = new Vector2(-180f, 180f);
+
+    [Tooltip("The min and max of the random duration to rotate the head.")]
+    [SerializeField] private Vector2 rotationDuration = new Vector2(0.5f, 2f);
+
+    [Tooltip("The min and max of the random duration to wait for the next rotation.")]
+    [SerializeField] private Vector2 waitForNextDuration = new Vector2(0.5f, 2f);
+
+    [Space(10f)]
+    [Tooltip("GameObject of the body model.")]
     [SerializeField] private GameObject body = null;
 
-    [SerializeField] private Vector2 rotationAngle = Vector2.zero;
-    [SerializeField] private Vector2 rotationDuration = Vector2.zero;
-    [SerializeField] private Vector2 waitForNextDuration = Vector2.zero;
-
-    private Vector3 nextRotation = Vector3.zero;
-    private float nextRotationDuration = 1f;
-    private float startTime = 0f;
+    [Tooltip("GameObject of the head model.")]
+    [SerializeField] private GameObject head = null;
 
     private float t = 0f;
+
+    private float nextRotationDuration = 1f;
+    private float startTime = 0f;
+    private Vector3 nextRotation = Vector3.zero;
 
     void Start()
     {

@@ -4,26 +4,39 @@ using UnityEngine;
 
 public class Resource : MonoBehaviour
 {
-    [SerializeField] private Sprite[] sprites = null;
-    public int maxValueSteps { get => this.sprites.Length; }
-
+    [Tooltip("The valueSteps after which the next sprite get used as model.\n[Min 1]")]
+    [Min(1)]
     [SerializeField] private int valueSteps = 10;
-    [SerializeField] private float delay = 2f;
-    [SerializeField] private float speed = 5f;
     public int ValueSteps { get => this.valueSteps; }
 
-    private int value = 0;
+    [Tooltip("The sprites to use as different values.")]
+    [SerializeField] private Sprite[] sprites = null;
+    public int maxValueSteps { get => this.sprites.Length; }
+    
+    [Header("Movement:")]
+    [Tooltip("Time until the objects starts to move to the collect point.\n[Min 0f]")]
+    [Min(0f)]
+    [SerializeField] private float delay = 2f;
 
+    [Tooltip("The value how fast the object should move.\n[Min 0.1f]")]
+    [Min(0.1f)]
+    [SerializeField] private float speed = 5f;
+
+    [Tooltip("The distance the target is reached.\n[Min 0f]")]
+    [Min(0f)]
     [SerializeField] private float toleranceDistance = 0.1f;
 
-    private SpriteRenderer spriteRenderer = null;
-    private Rigidbody2D body = null;
-    private GameObject target = null;
-    private Player player = null;
+    [Header("VFX:")]
+    [Tooltip("The particleSystem to trigger play.")]
+    [SerializeField] private ParticleSystem particle = null;
 
     private bool startCollect = false;
+    private int value = 0;
 
-    [SerializeField] private ParticleSystem particle = null;
+    private GameObject target = null;
+    private SpriteRenderer spriteRenderer = null;
+    private Rigidbody2D body = null;
+    private Player player = null;
 
     private void Awake()
     {
@@ -35,6 +48,7 @@ public class Resource : MonoBehaviour
         this.target = target;
         this.player = player;
         this.value = initValue;
+
         int i;
         for (i = 0; i < sprites.Length; i++)
         {
