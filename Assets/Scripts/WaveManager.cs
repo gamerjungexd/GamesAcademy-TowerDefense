@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public enum UnitLayer { Ground = 6, Air = 7 }
-
-
 public class WaveManager : MonoBehaviour
 {
     [Header("Debug:")]
