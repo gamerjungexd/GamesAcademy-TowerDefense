@@ -103,8 +103,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c7d24ea3dfd9ca34395bbc5ecf1485bb, type: 3}
   - {fileID: 21300000, guid: 1887fa42deaa9374a8d63c169a35811d, type: 3}
   - {fileID: 21300000, guid: 25de12c6344efdf4f9af2cb95f65d7f1, type: 3}
-  delay: 3
-  speed: 10
+  delay: 2
+  speed: 15
   toleranceDistance: 0.2
   particle: {fileID: 7587566228842870074}
 --- !u!50 &4443389292397931920
