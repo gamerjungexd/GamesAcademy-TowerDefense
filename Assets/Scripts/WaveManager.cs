@@ -150,14 +150,17 @@ public class WaveManager : MonoBehaviour
 
             if (waveIndex >= waveList.Length)
             {
-                if(loopWaves)
+                if (loopWaves)
                 {
                     waveIndex = 0;
                 }
                 else
                 {
                     Time.timeScale = 0f;
-                    gameWin.SetActive(true);
+                    if (gameWin != null)
+                    {
+                        gameWin.SetActive(true);
+                    }
                     return;
                 }
             }
@@ -169,6 +172,10 @@ public class WaveManager : MonoBehaviour
 
     private void SetUIWaveIndex()
     {
+        if (textfieldWaveIndex == null)
+        {
+            return;
+        }
         textfieldWaveIndex.text = "" + (waveIndex + 1);
     }
 

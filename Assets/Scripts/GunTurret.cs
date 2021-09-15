@@ -19,7 +19,10 @@ public class GunTurret : Turret
     {
         StartCoroutine(ShowAttack());
         HealthComponent component = targets[0].GetComponent<HealthComponent>();
-        component.OnDecreaseHealth(damage);
+        if (component != null)
+        {
+            component.OnDecreaseHealth(damage);
+        }
     }
     private IEnumerator ShowAttack()
     {
