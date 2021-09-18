@@ -6145,13 +6145,13 @@ MonoBehaviour:
   textfieldWaveIndex: {fileID: 0}
   gameWin: {fileID: 0}
   resourceTarget: {fileID: 2132098432}
-  TurretUpgrades:
+  turretUpgrades:
   - {fileID: 6182496378456725575, guid: 47e1d2ffae3fc624380581cd226e51bc, type: 3}
   - {fileID: 395839884207015776, guid: 5f5e21d46321d5c44bd8214558cf93d5, type: 3}
-  - {fileID: 4400938432839524607, guid: a75c1979baa251a40a3a304ab97e03b4, type: 3}
-  - {fileID: 7268435435618334641, guid: 885e95acaef5ce346938155366dd3e4a, type: 3}
   - {fileID: 2227524980436295889, guid: e465202c5c593b74f9206f57c9c79a9d, type: 3}
   - {fileID: 1228632388792447698, guid: dee3d024214a57d4186a895c07957ffb, type: 3}
+  - {fileID: 4400938432839524607, guid: a75c1979baa251a40a3a304ab97e03b4, type: 3}
+  - {fileID: 7268435435618334641, guid: 885e95acaef5ce346938155366dd3e4a, type: 3}
 --- !u!4 &1747799861
 Transform:
   m_ObjectHideFlags: 0

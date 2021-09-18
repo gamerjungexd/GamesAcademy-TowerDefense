@@ -6,7 +6,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [Tooltip("Type of the turret.")]
-    [SerializeField] TurretType type = 0;
+    [SerializeField] private TurretType type = 0;
     public TurretType Type { get => this.type; }
 
     [Tooltip("Which upgrade level is the turret of his type.\n[Min 0]")]

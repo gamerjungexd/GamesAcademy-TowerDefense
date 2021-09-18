@@ -42,7 +42,7 @@ public class WaveManager : MonoBehaviour
 
     [Header("Turrets:")]
     [Tooltip("GameObjects of each turret to register for the upgrades.")]
-    [SerializeField] private GameObject[] TurretUpgrades = null;
+    [SerializeField] private GameObject[] turretUpgrades = null;
 
 
     private int unitCount = 0;
@@ -181,7 +181,7 @@ public class WaveManager : MonoBehaviour
 
     public GameObject GetTurretUpgrade(TurretType type, int value)
     {
-        foreach (GameObject upgrades in TurretUpgrades)
+        foreach (GameObject upgrades in turretUpgrades)
         {
             if (upgrades.GetComponent<Turret>().Type == type && upgrades.GetComponent<Turret>().TypeLevel == value)
             {
@@ -194,7 +194,7 @@ public class WaveManager : MonoBehaviour
 
     private void InitHighestUpgradeLevel()
     {
-        foreach (GameObject upgrades in TurretUpgrades)
+        foreach (GameObject upgrades in turretUpgrades)
         {
             Turret turret = upgrades.GetComponent<Turret>();
             if (!highestTurretLevel.ContainsKey(turret.Type))
